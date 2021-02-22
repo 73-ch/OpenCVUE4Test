@@ -15,7 +15,7 @@ public class OpenCVTest2 : ModuleRules
 
 		PrivateDependencyModuleNames.AddRange(new string[] {  });
 		
-		// LoadOpenCV(Target);
+		LoadOpenCV(Target);
 
 		// Uncomment if you are using Slate UI
 		// PrivateDependencyModuleNames.AddRange(new string[] { "Slate", "SlateCore" });
@@ -66,6 +66,7 @@ public class OpenCVTest2 : ModuleRules
 			// PublicAdditionalLibraries.Add(Path.Combine(LibPath, "opencv_highgui451.lib"));
 			// PublicAdditionalLibraries.Add(Path.Combine(LibPath, "opencv_imgproc451.lib"));
 			PublicAdditionalLibraries.Add(Path.Combine(LibPath, "opencv_world451.lib"));
+			PublicAdditionalLibraries.Add(Path.Combine(LibPath, "opencv_world451d.lib"));
 
 			//Add Dynamic Libraries
 			// PublicDelayLoadDLLs.Add("opencv_core451.dll");
@@ -87,6 +88,7 @@ public class OpenCVTest2 : ModuleRules
 			
 			PublicLibraryPaths.Add(LibPath);
 			AddDllWin64(LibPath, "opencv_world451.dll");
+			AddDllWin64(LibPath, "opencv_world451d.dll");
 			AddDllWin64(LibPath, "opencv_videoio_ffmpeg451_64.dll");
 
 		}
@@ -100,7 +102,7 @@ public class OpenCVTest2 : ModuleRules
 	{
 		var fullPath = Path.Combine(dllLocatedDir, dllName);
 
-		PublicAdditionalLibraries.Add(fullPath);
+		// PublicAdditionalLibraries.Add(fullPath);
 		PublicDelayLoadDLLs.Add(dllName);
 		RuntimeDependencies.Add(fullPath);
 		CopyDll(dllName, fullPath);
